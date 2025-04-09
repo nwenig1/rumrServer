@@ -23,6 +23,7 @@ app.post('/createRoom', RoomController.createRoom);
 
 app.get('/sendMessageUI', (req, res) => {
     //this is not working cuz ejs module isnt found, honestly have no idea why.
+    //might work on yall's local idk, node dependencies are scary 
     //  Not essential, was just gonna use the page for some forms so I could test the post routes. 
     res.render('messageUI'); 
 }); 

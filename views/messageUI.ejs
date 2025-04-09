@@ -7,7 +7,9 @@
 <body>
   <h1>Message Input</h1>
   <form action="/sendMessage" method="POST">
-    <input type="text" name="message" placeholder="Your message" />
+    <input type = "text" name = "senderId" placeholder="sender id (also your id) this will probably be handled by app. is there a character limit to this"/>
+    <input type = "text" name = "roomId" placeholder = "room id. of the room you're in. will by handled by app" />
+    <input type="text" name="message" placeholder="Enter message here plz!!!!" />
     <button type="submit">Send</button>
   </form>
 </body>
