@@ -16,7 +16,7 @@ app.get('/getMessages/:roomId', ChatController.getMessages);
 
 app.post('/sendMessage', ChatController.sendMessage); 
 
-app.post('/getRooms', RoomController.getRooms)
+app.get('/getRooms', RoomController.getRooms)
 
 app.post('/createRoom', RoomController.createRoom); 
 
