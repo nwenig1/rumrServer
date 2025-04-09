@@ -1,0 +1,25 @@
+
+const ChatModel = require('./../models/ChatModel'); 
+
+function getMessages(req, res){ //will get changed to async w/ db change 
+    const roomId = req.params.roomId;
+    const messages = ChatModel.getMessages(roomId); 
+    res.send(messages);  
+};
+
+function sendMessage(req, res){
+    const senderId = req.body.senderId; 
+    const roomId = req.body.roomId; 
+    const message = req.body.message; 
+    ChatModel.sendMessage(senderId, roomId, message); 
+    const messages = ChatModel.getMessages(roomId); 
+    res.send(messages); 
+}
+
+
+module.exports = {
+    getMessages,
+    sendMessage
+}
+
+

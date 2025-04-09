@@ -1,0 +1,21 @@
+
+const RoomModel = require('./../models/RoomModel'); 
+function getRooms(){
+    const rooms = RoomModel.getRooms(); 
+    res.send(rooms); 
+}
+
+function createRoom(){
+    const name = req.body.roomName; 
+    RoomModel.createRoom(name); 
+    const rooms = RoomModel.getRooms(); 
+    res.send(rooms); 
+}
+
+
+
+
+module.exports = {
+    getRooms,
+    createRoom
+}; 
