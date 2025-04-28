@@ -4,8 +4,8 @@ function getRooms(){
     const rooms = chatRooms; 
     return rooms; 
 }
-function makeRoom(name){
-    const room = {Room_ID: chatRooms.length, Room_Name: name}; 
+function createRoom(name){
+    const room = {Room_ID: chatRooms.length + 1, Room_Name: name}; 
     chatRooms.push(room); 
 }
 
@@ -14,3 +14,8 @@ const chatRooms = [
     { Room_ID: 2, Room_Name: "Dev Chat" },
     { Room_ID: 3, Room_Name: "Random" }
   ];
+
+module.exports = {
+    getRooms, 
+    createRoom
+}

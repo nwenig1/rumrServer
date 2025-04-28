@@ -28,6 +28,10 @@ app.get('/sendMessageUI', (req, res) => {
     res.render('messageUI'); 
 }); 
 
+app.get('/createRoomUI', (req, res) => {
+  res.render('roomUI'); 
+})
+
 
 
 
