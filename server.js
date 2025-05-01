@@ -5,6 +5,28 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true })); //for processing form data in dev
 app.set('view engine', 'ejs');
 app.use(express.static('views'));
+// In here, we can replace the allowed ip ranges with the structure from the Trinity IP subnet. This way we listen to all possible devices, but restrict
+// access if the ip does not match the trinity allowed rangel.
+const allowedIPRanges = [
+  /^129\.115\./,         // Trinity University's subnet (example) VERIFY ON CAMPUS. 
+  /^10\./,
+  /^192\.168\./,
+  /^172\.(1[6-9]|2[0-9]|3[0-1])\./
+];
+
+app.use((req, res, next) => {
+  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
+  const allowed = allowedIPRanges.some(regex => regex.test(ip));
+
+  if (!allowed) {
+    console.log(`Blocked request from ${ip}`);
+    return res.status(403).send('Access restricted to university network.');
+  }
+
+  next();
+});
+
 
 const ChatController = require('./controllers/ChatController');
 const RoomController = require('./controllers/RoomController'); 
@@ -37,7 +59,7 @@ app.get('/createRoomUI', (req, res) => {
 
 
 
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+// make sure to listen to all access device types, but then filter out access only by the received ip
+app.listen(port, '0.0.0.0',() => {
+  console.log(`Server listening on all interfaces at port ${port}`);
+});
