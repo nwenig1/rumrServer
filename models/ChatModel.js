@@ -14,18 +14,18 @@ function sendMessage(senderId, roomId, message){
 }
 function createUser(){
   const newUserId = users.length + 1; 
-  const newUser = { UserId: newUserId, Room_ID: 1} //I think which user is in which room will be kept track of by the app, not server 
+  const newUser = { UserId: newUserId} 
   users.push(newUser); 
   console.log("Users: " + users); 
-  return newUserId; 
+  return newUser; 
 }
 
   const users = [
-    { UserID: 1, Room_ID: 1 },
-    { UserID: 2, Room_ID: 1 },
-    { UserID: 3, Room_ID: 2 },
-    { UserID: 4, Room_ID: 2 },
-    { UserID: 5, Room_ID: 3 }
+    { UserID: 1},
+    { UserID: 2},
+    { UserID: 3},
+    { UserID: 4},
+    { UserID: 5}
   ];
   
   const messages = [
