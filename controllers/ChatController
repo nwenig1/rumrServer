@@ -15,11 +15,16 @@ function sendMessage(req, res){
     const messages = ChatModel.getMessages(roomId); 
     res.send(messages); 
 }
+function createUser(req, res){
+    const userId = ChatModel.createUser(); 
+    res.send(userId); 
+}
 
 
 module.exports = {
     getMessages,
-    sendMessage
+    sendMessage,
+    createUser
 }
 
 

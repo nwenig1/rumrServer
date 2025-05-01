@@ -19,6 +19,7 @@ app.post('/sendMessage', ChatController.sendMessage);
 app.get('/getRooms', RoomController.getRooms)
 
 app.post('/createRoom', RoomController.createRoom); 
+app.get('/createUser', ChatController.createUser); 
 
 
 app.get('/sendMessageUI', (req, res) => {
@@ -27,6 +28,7 @@ app.get('/sendMessageUI', (req, res) => {
     //  Not essential, was just gonna use the page for some forms so I could test the post routes. 
     res.render('messageUI'); 
 }); 
+
 
 app.get('/createRoomUI', (req, res) => {
   res.render('roomUI'); 

@@ -12,34 +12,42 @@ function sendMessage(senderId, roomId, message){
     const newMsg = {Message_ID: messages.length +1 , Room_ID: roomId, Sender_ID: senderId, Message: message}; 
     messages.push(newMsg); 
 }
+function createUser(){
+  const newUserId = users.length + 1; 
+  const newUser = { UserId: newUserId, Room_ID: 1} //I think which user is in which room will be kept track of by the app, not server 
+  users.push(newUser); 
+  console.log("Users: " + users); 
+  return newUserId; 
+}
 
   const users = [
-    { UserID: 101, Room_ID: 1 },
-    { UserID: 102, Room_ID: 1 },
-    { UserID: 103, Room_ID: 2 },
-    { UserID: 104, Room_ID: 2 },
-    { UserID: 105, Room_ID: 3 }
+    { UserID: 1, Room_ID: 1 },
+    { UserID: 2, Room_ID: 1 },
+    { UserID: 3, Room_ID: 2 },
+    { UserID: 4, Room_ID: 2 },
+    { UserID: 5, Room_ID: 3 }
   ];
   
   const messages = [
-    { Message_ID: 1, Room_ID: 1, Sender_ID: 101, Message: "Hey everyone!" },
-    { Message_ID: 2, Room_ID: 1, Sender_ID: 102, Message: "Hello! How's your day?" },
-    { Message_ID: 3, Room_ID: 1, Sender_ID: 101, Message: "Pretty good, thanks!" },
-    { Message_ID: 4, Room_ID: 2, Sender_ID: 103, Message: "Who's pushing the new build?" },
-    { Message_ID: 5, Room_ID: 2, Sender_ID: 104, Message: "I am. Just finishing QA." },
-    { Message_ID: 6, Room_ID: 2, Sender_ID: 103, Message: "Awesome, thanks!" },
-    { Message_ID: 7, Room_ID: 3, Sender_ID: 105, Message: "Anyone want to grab lunch?" },
-    { Message_ID: 8, Room_ID: 1, Sender_ID: 102, Message: "Let’s sync after lunch." },
-    { Message_ID: 9, Room_ID: 1, Sender_ID: 101, Message: "Sounds good." },
-    { Message_ID: 10, Room_ID: 2, Sender_ID: 104, Message: "Build pushed to staging 🚀" },
-    { Message_ID: 11, Room_ID: 2, Sender_ID: 103, Message: "Nice work!" },
-    { Message_ID: 12, Room_ID: 3, Sender_ID: 105, Message: "No takers? 😅" },
-    { Message_ID: 13, Room_ID: 1, Sender_ID: 101, Message: "Anyone seen the new design mockups?" },
-    { Message_ID: 14, Room_ID: 1, Sender_ID: 102, Message: "Not yet, where are they?" },
-    { Message_ID: 15, Room_ID: 1, Sender_ID: 101, Message: "In the Figma folder: /Design/Q2" }
+    { Message_ID: 1, Room_ID: 1, Sender_ID: 1, Message: "Hey everyone!" },
+    { Message_ID: 2, Room_ID: 1, Sender_ID: 2, Message: "Hello! How's your day?" },
+    { Message_ID: 3, Room_ID: 1, Sender_ID: 1, Message: "Pretty good, thanks!" },
+    { Message_ID: 4, Room_ID: 2, Sender_ID: 3, Message: "Who's pushing the new build?" },
+    { Message_ID: 5, Room_ID: 2, Sender_ID: 4, Message: "I am. Just finishing QA." },
+    { Message_ID: 6, Room_ID: 2, Sender_ID: 3, Message: "Awesome, thanks!" },
+    { Message_ID: 7, Room_ID: 3, Sender_ID: 5, Message: "Anyone want to grab lunch?" },
+    { Message_ID: 8, Room_ID: 1, Sender_ID: 2, Message: "Let’s sync after lunch." },
+    { Message_ID: 9, Room_ID: 1, Sender_ID: 1, Message: "Sounds good." },
+    { Message_ID: 10, Room_ID: 2, Sender_ID: 4, Message: "Build pushed to staging 🚀" },
+    { Message_ID: 11, Room_ID: 2, Sender_ID: 3, Message: "Nice work!" },
+    { Message_ID: 12, Room_ID: 3, Sender_ID: 5, Message: "No takers? 😅" },
+    { Message_ID: 13, Room_ID: 1, Sender_ID: 1, Message: "Anyone seen the new design mockups?" },
+    { Message_ID: 14, Room_ID: 1, Sender_ID: 2, Message: "Not yet, where are they?" },
+    { Message_ID: 15, Room_ID: 1, Sender_ID: 1, Message: "In the Figma folder: /Design/Q2" }
   ]
 
 module.exports = {
     getMessages,
-    sendMessage
+    sendMessage,
+    createUser
 }
