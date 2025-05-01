@@ -11,8 +11,6 @@ function sendMessage(senderId, roomId, message){
     //db query here
     const newMsg = {Message_ID: messages.length +1 , Room_ID: roomId, Sender_ID: senderId, Message: message}; 
     messages.push(newMsg); 
-    console.log("new message: " + newMsg); 
-    console.log("all messages: " + message); 
 }
 
   const users = [
