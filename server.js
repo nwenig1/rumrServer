@@ -1,4 +1,6 @@
 const express = require('express'); 
+const https = require('https');
+const fs = require('fs');
 const app = express(); 
 const port = 3000; 
 const bodyParser = require('body-parser');
@@ -8,6 +10,7 @@ app.use(express.static('views'));
 // In here, we can replace the allowed ip ranges with the structure from the Trinity IP subnet. This way we listen to all possible devices, but restrict
 // access if the ip does not match the trinity allowed rangel.
 const allowedIPRanges = [
+  /^131.194\./  ,
   /^129\.115\./,         // Trinity University's subnet (example) VERIFY ON CAMPUS. 
   /^10\./,
   /^192\.168\./,
@@ -16,6 +19,7 @@ const allowedIPRanges = [
 
 app.use((req, res, next) => {
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  console.log("print MY IP",ip);
 
   const allowed = allowedIPRanges.some(regex => regex.test(ip));
 
@@ -35,6 +39,11 @@ app.get('/', (req, res) => {
 })
 
 app.get('/getMessages/:roomId', ChatController.getMessages); 
+app.get('/debug-ip', (req, res) => {
+  const rawIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  res.send(`Your detected IP is: ${rawIp}`);
+});
+
 
 app.post('/sendMessage', ChatController.sendMessage); 
 
@@ -60,6 +69,9 @@ app.get('/createRoomUI', (req, res) => {
 
 
 // make sure to listen to all access device types, but then filter out access only by the received ip
-app.listen(port, '0.0.0.0',() => {
-  console.log(`Server listening on all interfaces at port ${port}`);
+// app.listen(port, '0.0.0.0',() => {
+//   console.log(`Server listening on all interfaces at port ${port}`);
+// });
+app.listen(3000, '0.0.0.0', () => {
+  console.log('Server bound only to 0.0.0.0');
 });
