@@ -11,10 +11,15 @@ app.use(express.static('views'));
 // access if the ip does not match the trinity allowed rangel.
 const allowedIPRanges = [
   /^131.194\./  ,
-  /^129\.115\./,         // Trinity University's subnet (example) VERIFY ON CAMPUS. 
-  /^10\./,
-  /^192\.168\./,
-  /^172\.(1[6-9]|2[0-9]|3[0-1])\./
+  // /^129\.115\./,         // Trinity University's subnet (example) VERIFY ON CAMPUS. 
+  // /^10\./,
+  // /^192\.168\./,
+  // /^162\.233\./,
+  // /^172\.(1[6-9]|2[0-9]|3[0-1])\./,
+  // /^146\.112\./,
+  // /^2603:8081:52f0:b6c0:9919:deb9:6941:2f9f/,
+  // /^2600:1700:31:1ed0:54b3:50c7:28d5:93be/,
+  // /^35\./
 ];
 
 app.use((req, res, next) => {
